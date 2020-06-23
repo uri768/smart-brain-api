@@ -23,7 +23,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res) => { res.send(database.users) })
+app.get('/', (req, res) => { res.send('It is working!') })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) })
@@ -33,11 +33,3 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 app.listen(process.env.PORT || 3000, () => {
    console.log(`App is running on port ${process.env.PORT}`)
 })
-
-/*
-/res = this is working
-/signin --> POST = success/fail
-/register --> POST = user
-/profile/:userID --> GET = user
-/image --> PUT --> user
-*/
